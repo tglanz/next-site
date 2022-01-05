@@ -1,0 +1,26 @@
+.container {
+  max-width: min(700px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+
+  min-height: 100%;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+.container > header {
+  grid-area: header;
+}
+
+.container > main {
+  grid-area: main;
+}
+
+.container > footer {
+  grid-area: footer;
+}
