@@ -1,8 +1,9 @@
-import Recat from 'react';
 import { MetadataAggregation } from "../../lib/article";
 import { Content } from "../../lib/content";
 import Headline from "../Headline"
 import TaxonomyList from "../TaxonomyList/TaxonomyList";
+
+import useConfig from "../utils/useConfig";
 
 interface Props {
   content: Content
@@ -19,32 +20,40 @@ const createTaxonomyListItems = (
   }));
 
 const TaxonmiesContainer: React.FC<{ title: string }> = ({ title, children }) => (
-  <div className="m-4 p-4">
+  <div className="
+      m-4 p-4
+      shadow shadow-neutral-600
+      ">
     <p className="text-xl">{title}</p>
     {children}
   </div>
 )
 
-export default ({ content }: Props) => {
+const HomePage = ({ content }: Props) => {
+  const config = useConfig();
   return (
     <div>
       <div className="m-4">
-        <Headline />
+        <Headline
+          title={config.headline.title}
+          subtitle={config.headline.subtitle} />
 
         <TaxonmiesContainer title="Categories">
           <TaxonomyList items={createTaxonomyListItems(
             content.metadataAggregation.categories,
-            key => `/category/${key}`
+            key => `/categories/${key}`
           )} />
         </TaxonmiesContainer>
 
         <TaxonmiesContainer title="Tags">
           <TaxonomyList items={createTaxonomyListItems(
             content.metadataAggregation.tags,
-            key => `/tag/${key}`
+            key => `/tags/${key}`
           )} />
         </TaxonmiesContainer>
       </div>
     </div>
   );
 };
+
+export default HomePage;

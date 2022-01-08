@@ -34,7 +34,7 @@ export const getStaticProps = async ({ params }: Params) => {
   const {tag} = params;
   const content = await getContent();
   const articles = content.articles
-    .filter(article => article.metadata.categories.includes(tag));
+    .filter(article => article.metadata.tags.includes(tag));
 
   return {
     props: {

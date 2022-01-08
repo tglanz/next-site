@@ -4,6 +4,7 @@ categories:
   - Algorithm
 tags:
   - Dynamic Programming
+  - Palindrom
 ---
 
 A string $S$ is a palindrom iff $S = reverse(S)$

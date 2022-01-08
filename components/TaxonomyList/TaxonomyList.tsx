@@ -40,9 +40,12 @@ const ListItem = ({ item }: ListItemProps) => (
   </Link>
 );
 
-export default ({ items }: Props) => (
+const TaxonomyList = ({ items }: Props) => (
   <div className="
-    flex flex-wrap items-center">{
+    flex flex-wrap items-center
+    ">{
       items.map((item, index) => <ListItem key={index} item={item} />)
     }</div>
 )
+
+export default TaxonomyList;

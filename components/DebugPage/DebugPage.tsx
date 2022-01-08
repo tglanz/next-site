@@ -4,7 +4,7 @@ export interface Props {
   content: Content
 }
 
-export default (props: Props) => {
+const DebugPage = (props: Props) => {
   const { content } = props;
   return (
     <div>
@@ -13,3 +13,5 @@ export default (props: Props) => {
     </div>
   );
 }
+
+export default DebugPage;

@@ -16,6 +16,7 @@ export interface MetadataAggregation {
 
 export interface ArticleMetadata {
   title: string,
+  description?: string,
   priority: number,
   tags: string[],
   categories: string[],
@@ -55,6 +56,7 @@ export async function readArticle(filePath: string): Promise<Article> {
 
   const metadata: ArticleMetadata = {
     title: matterData.title,
+    description: matterData.description || null,
     priority: matterData.priority || 0,
     tags: matterData.tags || [],
     categories: matterData.categories || [],

@@ -1,5 +1,6 @@
 ---
 title: Bloom Filter
+description: Illustrate the Bloomfilter data structure
 categories:
   - Algorithm
 tags:
