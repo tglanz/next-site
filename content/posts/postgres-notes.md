@@ -4,6 +4,7 @@ title: Postgres Notes
 date: 2020-09-12
 categories:
   - Notes
+  - Databases
 tags:
   - PostgreSQL
 ---

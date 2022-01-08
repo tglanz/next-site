@@ -3,7 +3,7 @@ layout: post
 title: Archlinux Installation Guide
 date: 2019-06-26
 categories:
-  - Guide
+  - Guides
 tags:
   - Archlinux
   - Linux

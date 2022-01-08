@@ -1,7 +1,7 @@
 ---
 title: Longest increasing subsequence
 categories:
-  - Algorithm
+  - Algorithms
 tags:
   - Dynamic Programming
 ---

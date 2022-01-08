@@ -1,26 +1,28 @@
 ---
 title: Longest substring that is a Palindrom
 categories:
-  - Algorithm
+  - Algorithms
 tags:
   - Dynamic Programming
   - Palindrom
 ---
 
+# Overview
+
 A string $S$ is a palindrom iff $S = reverse(S)$
 
-**The problem**
+**The Problem**
 
 Given a string S, find the longest *substring* of S that is also a palindrom
 
-{{< alert "Remember that substrings are consequtive" "info" >}}
+> Remember that substrings are consequtive
 
-**Illustration**
+**To illustrate**
 
 - a**bcb**ea $\rightarrow$ bcb (not abcba)
 - **abbcbba**dad $\rightarrow$ abbcbba
 
-**Solution**
+# Solution
 
 We shall define $opt(i, j)$ to indicate the length of the longest palindrom substring between the i'th character to the j'th character by the recurrence relation
 

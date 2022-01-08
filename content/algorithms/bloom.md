@@ -2,7 +2,7 @@
 title: Bloom Filter
 description: Illustrate the Bloomfilter data structure
 categories:
-  - Algorithm
+  - Algorithms
 tags:
 ---
 
@@ -56,13 +56,15 @@ Now we can easily understand where the False Positives comes from.
 ## False Positives
 
 Assume 
+
 - $S = \\{x_1, x_2, x_3\\}$
 - $m=5$
 - $k=2$
 
-With the hash functions
-- $h_1(x_1)=1 ~;~ h_1(x_2)=3 ~;~ h_1(x_3)=3$
-- $h_2(x_1)=4 ~;~ h_2(x_2)=1 ~;~ h_2(x_3)=4$
+With the hash functions  
+
+- $h_1(x_1)=1 ~~ h_1(x_2)=3 ~~ h_1(x_3)=3$
+- $h_2(x_1)=4 ~~ h_2(x_2)=1 ~~ h_2(x_3)=4$
 
 And the scenario of $X = \\{x_1, x_2\\}$ as shown below
 

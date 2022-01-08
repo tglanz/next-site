@@ -22,17 +22,17 @@ interface ListItemProps {
 const ListItem = ({ item }: ListItemProps) => (
   <Link href={item.href}>
     <div className="
-      m-1 p-2 px-5
+      m-1 p-1 px-3
       border border-black rounded-lg
       flex flex-row items-center
       cursor-pointer
       duration-200 transition-colors hover:bg-teal-200">
-      <span className="mr-2">
+      <span className="mr-2 text-xs">
         {item.display}
       </span>
       <span className="
         inline-flex items-center justify-center
-        px-2 py-1 text-xs font-bold leading-none
+        px-1 text-xs font-bold leading-none
         bg-red-400 text-white rounded-full">
         {item.count}
       </span>

@@ -1,8 +1,17 @@
 import path from 'path';
 import fs from 'fs/promises';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import remarkHtml from 'remark-html';
+
+import config from '../config.json';
+
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeDocument from 'rehype-document';
+import rehypeFormat from 'rehype-format';
+import rehypeStringify from 'rehype-stringify';
+import rehypeHighlight from 'rehype-highlight';
+import remarkGfm from 'remark-gfm';
 
 const MANDATORY_METADATA_FIELDS = ["title"];
 
@@ -18,6 +27,7 @@ export interface ArticleMetadata {
   title: string,
   description?: string,
   priority: number,
+  permalink?: string,
   tags: string[],
   categories: string[],
 }
@@ -28,9 +38,16 @@ export interface ArticleContent {
 }
 
 export interface Article {
-  url: string,
+  id: string,
+  filePath: string,
   metadata: ArticleMetadata,
   content: ArticleContent
+}
+
+function createArticleIdFromFilePath(filePath: string) {
+  const relativePath = path.relative(config.content.path, filePath);
+  const id = relativePath.replace(path.extname(relativePath), '');
+  return encodeURI(id);
 }
 
 export async function readArticle(filePath: string): Promise<Article> {
@@ -40,9 +57,15 @@ export async function readArticle(filePath: string): Promise<Article> {
   // .replace(/.*(\.[^\.]+)$/, '')
   // const id = path.basename(filePath).replace(/(\.[^\.]+)$/, '')
 
-  const processedContent = await remark()
-    .use(remarkHtml)
-    .process(articleMatter.content)
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkRehype)
+    .use(rehypeHighlight)
+    .use(rehypeDocument)
+    .use(rehypeFormat)
+    .use(rehypeStringify)
+    .process(articleMatter.content);
 
   const contentHtml = processedContent.toString()
 
@@ -57,13 +80,15 @@ export async function readArticle(filePath: string): Promise<Article> {
   const metadata: ArticleMetadata = {
     title: matterData.title,
     description: matterData.description || null,
+    permalink: matterData.permalink || null,
     priority: matterData.priority || 0,
     tags: matterData.tags || [],
     categories: matterData.categories || [],
   }
 
   return {
-    url: filePath,
+    id: metadata.permalink || createArticleIdFromFilePath(filePath),
+    filePath,
     metadata,
     content: {
       raw: articleMatter.content,

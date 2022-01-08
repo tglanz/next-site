@@ -1,7 +1,7 @@
 ---
 title: Longest Path in Ordered Graph
 categories:
-  - Algorithm
+  - Algorithms
 tags:
   - Dynamic Programming
 ---

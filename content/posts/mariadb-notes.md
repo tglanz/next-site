@@ -3,6 +3,7 @@ layout: post
 title: MariaDB Notes
 date: 2020-06-26
 categories:
+  - Databases
   - Notes
 tags:
   - MariaDB

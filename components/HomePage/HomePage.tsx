@@ -3,6 +3,8 @@ import { Content } from "../../lib/content";
 import Headline from "../Headline"
 import TaxonomyList from "../TaxonomyList/TaxonomyList";
 
+import * as urls from '../../lib/urls';
+
 import useConfig from "../utils/useConfig";
 
 interface Props {
@@ -41,14 +43,14 @@ const HomePage = ({ content }: Props) => {
         <TaxonmiesContainer title="Categories">
           <TaxonomyList items={createTaxonomyListItems(
             content.metadataAggregation.categories,
-            key => `/categories/${key}`
+            key => urls.categroyArticles(key)
           )} />
         </TaxonmiesContainer>
 
         <TaxonmiesContainer title="Tags">
           <TaxonomyList items={createTaxonomyListItems(
             content.metadataAggregation.tags,
-            key => `/tags/${key}`
+            key => urls.tagArticles(key)
           )} />
         </TaxonmiesContainer>
       </div>
