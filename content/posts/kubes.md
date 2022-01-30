@@ -55,10 +55,12 @@ We will not rely on the package manager to install the components.
 
 Define the relevant variables
 
+> Note that the cni directory does not include the version! Later we will install a network plugin, it'll be in the same directory
+
 ```
 ARCH="amd64"
 CNI_VERSION="v0.8.2"
-CNI_DIR="/opt/cni/$CNI_VERSION/bin"
+CNI_DIR="/opt/cni/bin"
 CRICTL_VERSION="v1.23.0"
 CRICTL_DIR="/opt/cri/$CRICTL_VERSION/bin"
 KUBERNETES_VERSION="v1.23.3"
@@ -109,13 +111,19 @@ sudo apt install ethtool socat conntrack
 Create an update alternative
 
 ```
+sudo update-alternatives --install /usr/bin/kubeadm kubeadm $KUBERNETES_DIR/kubeadm 100
 sudo update-alternatives --install /usr/bin/kubelet kubelet $KUBERNETES_DIR/kubelet 100
+sudo update-alternatives --install /usr/bin/kubectl kubectl $KUBERNETES_DIR/kubectl 100
 ```
 
-Run
+Run @controlplane
+
+> TODO: load balancer, hostnames
+
+Initialize configuration such that the network is 10.10.0.0/16
 
 ```
-$KUBERNETES_DIR/kubeadm init
+sudo kubeadm init --pod-network-cidr 10.10.0.0/16 --apiserver-advertise-address {ip}
 ```
 
 For documentation, you should see something like
@@ -139,6 +147,20 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-kubeadm join 192.168.121.210:6443 --token 452jqf.n20y4sub41mmkkp7 \
-	--discovery-token-ca-cert-hash sha256:d1b7531de08699d3462d54f6f55c7da713cb1223fddd3458e7c84fd82e277fdc
+kubeadm join 192.168.121.210:6443 --token clns4a.b29f6anjipygy0e2 \
+	--discovery-token-ca-cert-hash sha256:833f599cc9ab27eb5010c499e9c77e8e3263fb991d8e9e78ef187ba97e1efb59
+```
+
+Do as it says, run
+
+```
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+We will use [Weave Net](https://kubernetes.io/docs/tasks/administer-cluster/network-policy-provider/weave-network-policy/) as a network plugin
+
+```
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
