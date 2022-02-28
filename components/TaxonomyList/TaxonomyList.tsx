@@ -25,9 +25,9 @@ const ListItem = ({ item }: ListItemProps) => (
       m-1 p-2 px-4 font-mono
       border border-black rounded-lg
       flex flex-row items-center
-      cursor-pointer
+      cursor-pointer gap-2
       duration-200 transition-colors hover:bg-teal-200">
-      <span className="mr-2">
+      <span className="text-sm">
         {item.display}
       </span>
       <span className="
