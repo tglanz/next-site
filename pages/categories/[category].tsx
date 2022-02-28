@@ -44,7 +44,7 @@ export const getStaticProps = async ({ params }: Params) => {
 }
 
 const NextCategoryPage: NextPage<Props> = ({ category, articles }) => (
-  <ArticleListPage title={category} subtitle="" articles={articles} />
+  <ArticleListPage title={category} subtitle="Category" articles={articles} />
 );
 
 export default NextCategoryPage;

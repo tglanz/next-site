@@ -13,7 +13,7 @@ const ArticleListPage = ({ title, subtitle, articles }: Props) => (
     <Headline title={title} subtitle={subtitle} />
     {
       articles.map((article, index) => (
-        <div key={index} className="m-2">
+        <div key={index} className="my-8">
           <ArticleCard article={article} />
         </div>
       ))

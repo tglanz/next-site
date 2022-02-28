@@ -22,12 +22,8 @@ const ArticlePage = ({ article }: Props) => {
   return (
     <div>
       <Headline title={article.metadata.title} subtitle={""} />
-  
-      {article.metadata.description
-        ? <p>{article.metadata.description}</p>
-        : undefined}
-  
-      <div className="text-sm m-4">
+{/*   
+      <div className="font-sans">
         {article.metadata.categories.length > 0
           ? <TaxonomyLinks taxonomy="Categories" values={article.metadata.categories} />
           : undefined}
@@ -35,7 +31,7 @@ const ArticlePage = ({ article }: Props) => {
           ? <TaxonomyLinks taxonomy="Tags" values={article.metadata.tags} />
           : undefined}
       </div>
-  
+   */}
       <ArticleContent content={article.content} />
     </div>
   );

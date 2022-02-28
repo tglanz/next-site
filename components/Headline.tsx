@@ -8,8 +8,8 @@ const Headline = ({ title, subtitle }: Props) => {
     <div className="
         p-2
         flex flex-col items-center">
-      <p className="text-4xl">{title}</p>
-      <p className="text-lg">{subtitle}</p>
+      <span className="text-4xl font-semibold">{title}</span>
+      <span className="text-lg">{subtitle}</span>
     </div>
   )
 };

@@ -44,7 +44,7 @@ export const getStaticProps = async ({ params }: Params) => {
 }
 
 const NextTagPage: NextPage<Props> = ({ tag, articles }) => (
-  <ArticleListPage title={tag} subtitle="" articles={articles} />
+  <ArticleListPage title={tag} subtitle="Tag" articles={articles} />
 );
 
 export default NextTagPage;

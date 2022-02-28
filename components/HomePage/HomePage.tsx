@@ -19,15 +19,16 @@ const createTaxonomyListItems = (
     display: key,
     href: createHref(key),
     count: value.count,
-  }));
+  }))
+  .sort((a, b) => a.display.localeCompare(b.display));
 
 const TaxonmiesContainer: React.FC<{ title: string }> = ({ title, children }) => (
   <div className="
-      m-4 p-4
-      shadow shadow-neutral-600
-      ">
-    <p className="text-xl">{title}</p>
-    {children}
+      p-4 m-4 shadow">
+    <span className="text-4xl">{title}</span>
+    <div className="my-4 pl-4">
+      {children}
+    </div>
   </div>
 )
 
@@ -35,7 +36,9 @@ const HomePage = ({ content }: Props) => {
   const config = useConfig();
   return (
     <div>
-      <div className="m-4">
+      <div className="m-4 flex flex-col items-center">
+        <img src="/logo.png"></img>
+
         <Headline
           title={config.headline.title}
           subtitle={config.headline.subtitle} />

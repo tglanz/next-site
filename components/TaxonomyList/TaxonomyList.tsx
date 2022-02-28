@@ -22,12 +22,12 @@ interface ListItemProps {
 const ListItem = ({ item }: ListItemProps) => (
   <Link href={item.href}>
     <div className="
-      m-1 p-1 px-3
+      m-1 p-2 px-4 font-mono
       border border-black rounded-lg
       flex flex-row items-center
       cursor-pointer
       duration-200 transition-colors hover:bg-teal-200">
-      <span className="mr-2 text-xs">
+      <span className="mr-2">
         {item.display}
       </span>
       <span className="

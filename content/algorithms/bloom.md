@@ -42,14 +42,15 @@ __add(x)__
 
 Apply all hash functions of $H$ on $x$ and set the corresponding bit in $A$ to 1.
 
-- $\forall h \in H$
+- $\forall h \in H$  
   - $A[h(x)] \leftarrow 1$
 
 __contains(x)__
 
 Apply all hash functions of $H$ on $x$ and return true if and only if all of the corresponding bits in $A$ are set to 1.
 
-- $\forall h \in H ~;~ A[h(x)] = 1 \Rightarrow True$
+- $\forall h \in H$
+  - $A[h(x)] = 1 \Rightarrow True$
 
 Now we can easily understand where the False Positives comes from.
 

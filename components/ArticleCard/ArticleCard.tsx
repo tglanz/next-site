@@ -11,10 +11,10 @@ export interface Props {
 const Container: React.FC<{ href: string }> = ({ href, children }) => (
   <Link href={href}>
     <div className="
-      p-2
-      border border-1 border-neutral-400
+      p-4
+      border border-1
       cursor-pointer
-      transition-colors duration-500 hover:bg-teal-200
+      transition-colors duration-500
       shadow-md">
       {children}
     </div>
@@ -22,7 +22,7 @@ const Container: React.FC<{ href: string }> = ({ href, children }) => (
 )
 
 const TaxonomyValues: React.FC<{ taxonomy: string, values: string[] }> = ({ taxonomy, values }) => (
-  <div className="text-xs">
+  <div className="text-sm">
     <span>{taxonomy}: </span>
     <span>
       {values.map((value, index) => (
@@ -42,15 +42,18 @@ function ArticleCard(props: Props) {
 
   return (
     <Container href={urls.article(article.id)}>
-      <p className="text-lg font-bold">{article.metadata.title}</p>
+      <p className="text-2xl font-bold">{article.metadata.title}</p>
 
       {article.metadata.description
-        ? <p className="text-sm italic">{article.metadata.description}</p>
+        ? <p className="font-sans">{article.metadata.description}</p>
         : undefined}
+
+      <div className="mb-2" />
 
       {article.metadata.categories.length > 0
         ? <TaxonomyValues taxonomy="Categories" values={article.metadata.categories} />
         : undefined}
+
       {article.metadata.tags.length > 0
         ? <TaxonomyValues taxonomy="Tags" values={article.metadata.tags} />
         : undefined}
