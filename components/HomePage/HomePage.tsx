@@ -66,6 +66,14 @@ const HomePage = ({ content }: Props) => {
             key => urls.tagArticles(key)
           )} />
         </TaxonmiesContainer>
+
+        <p>Todos</p>
+        <ul>
+          <li>Bread crumbs</li>
+          <li>Article Content style</li>
+          <li>General style</li>
+          <li>Content arrangement</li>
+        </ul>
       </div>
     </div>
   );
