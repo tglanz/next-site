@@ -66,11 +66,10 @@ const SearchBox = ({ }: Props) => {
 
   return (
     <div>
-      <div className="flex flex-row items-center gap-2 justify-end">
-        <FaSearch className="mx-2" />
+      <div className="flex flex-row items-center gap-2 justify-center">
         <input type="search"
           value={searchTerm}
-          className="border border-black pl-2"
+          className="border border-black pl-2 text-center"
           placeholder="Search (WIP)"
           onChange={e => handleTermChange(e.target.value)} />
       </div>

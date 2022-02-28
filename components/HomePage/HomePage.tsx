@@ -9,6 +9,7 @@ import useConfig from "../utils/useConfig";
 import { useContext, useEffect } from "react";
 import { SearchIndexContext } from "../utils/searchIndexContext";
 import SearchIndex from "../../lib/search-index";
+import SearchBox from "../SearchBox/SearchBox";
 
 interface Props {
   content: Content
@@ -49,6 +50,8 @@ const HomePage = ({ content }: Props) => {
         <Headline
           title={config.headline.title}
           subtitle={config.headline.subtitle} />
+
+        <SearchBox />
 
         <TaxonmiesContainer title="Categories">
           <TaxonomyList items={createTaxonomyListItems(
