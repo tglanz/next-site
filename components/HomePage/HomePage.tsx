@@ -6,6 +6,9 @@ import TaxonomyList from "../TaxonomyList/TaxonomyList";
 import * as urls from '../../lib/urls';
 
 import useConfig from "../utils/useConfig";
+import { useContext, useEffect } from "react";
+import { SearchIndexContext } from "../utils/searchIndexContext";
+import SearchIndex from "../../lib/search-index";
 
 interface Props {
   content: Content
@@ -34,6 +37,10 @@ const TaxonmiesContainer: React.FC<{ title: string }> = ({ title, children }) =>
 
 const HomePage = ({ content }: Props) => {
   const config = useConfig();
+
+  const searchIndexContext = useContext(SearchIndexContext);
+  useEffect(() => searchIndexContext.set(new SearchIndex(content.articles)), [content])
+
   return (
     <div>
       <div className="m-4 flex flex-col items-center">

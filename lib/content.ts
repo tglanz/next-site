@@ -3,13 +3,14 @@ import { readArticle } from './article';
 
 import * as path from 'path';
 import * as fs from 'fs/promises';
+import SearchIndex from './search-index';
 
 export interface Content {
   articles: Article[],
   metadataAggregation: {
     tags: MetadataAggregation,
     categories: MetadataAggregation
-  }
+  },
 }
 
 async function getFilesRecursivesly(directoryPath: string): Promise<string[]> {
@@ -31,6 +32,18 @@ async function getFilesRecursivesly(directoryPath: string): Promise<string[]> {
 export async function readContent(directoryPath: string) {
   const files = await getFilesRecursivesly(directoryPath);
   const articles = await Promise.all(files.map(readArticle));
+
+  articles.forEach(article => {
+    if (article.metadata.categories.length === 0) {
+      article.metadata.categories.push("[Uncategorized]")
+    }
+
+    if (article.metadata.tags.length === 0) {
+      article.metadata.tags.push("[Untagged]")
+    }
+  })
+
   const metadataAggregation = aggregateMetadata(articles);
+
   return { articles, metadataAggregation };
 }

@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 import ArticleListPage from "../../components/ArticleListPage/ArticleListPage";
 import { Article } from "../../lib/article";
 import { getContent } from "../../lib/content-cache";
