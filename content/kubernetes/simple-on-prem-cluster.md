@@ -1,9 +1,10 @@
 ---
-title: Kubes
+title: Simple on-prem Kuberenetes cluster 
 categories:
     - Kubernetes
 tags:
     - Kubernetes
+weight: 999
 ---
 
 # Kubes
