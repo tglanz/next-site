@@ -96,6 +96,8 @@ Types of Replication
 
 # Kinesis
 
+Realtime processing platform.
+
 # Storage Gateway
 
 Provides on-premise storage access to cloud storage.

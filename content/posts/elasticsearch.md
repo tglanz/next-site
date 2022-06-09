@@ -50,14 +50,6 @@ Elasticsearch can maintain aggregations of the data enabling us to analyze summa
 
 Furthermore, aggregations can operate alongside the search requests, meaning that we can gain aggregative information for all search results.
 
-### Quering using Query DSL
-
-### Querying using SQL
-
-## Distributed architecture
-
-## Notable Examples
-
 ### cat API
 
 The ```_cat``` endpoint provides "Compact and Aligned Text" meaning, a general, __consumed by humans__ information.
@@ -90,4 +82,9 @@ There are many query parameters that affects how the search is being performed a
 
 The body also contains important information the important one is the "query" field.
 
+### shards
 
+Show shards
+
+    /_cat/shards
+    /_cat/shards?h=index,shard
