@@ -41,18 +41,18 @@ const HomePage = ({ content }: Props) => {
   const config = useConfig();
 
   const searchIndexContext = useContext(SearchIndexContext);
-  useEffect(() => searchIndexContext.set(new SearchIndex(content.articles)), [content])
+  useEffect(() => searchIndexContext.set(new SearchIndex(content.articles)), [])
 
   return (
     <Layout.Main>
       <div className="m-4 flex flex-col items-center">
-        <img src="/logo.png"></img>
+        {/* <img src="/logo.png"></img>
 
         <Headline
           title={config.headline.title}
           subtitle={config.headline.subtitle} />
 
-        <SearchBox />
+        <SearchBox /> */}
 
         <TaxonmiesContainer title="Categories">
           <TaxonomyList items={createTaxonomyListItems(

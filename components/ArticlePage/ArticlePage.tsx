@@ -22,9 +22,10 @@ const ArticlePage = ({ article }: Props) => {
 
   return (
     <>
-      <Layout.Header>
+      { article.metadata.title && <Layout.Header>
         <Headline title={article.metadata.title} subtitle={""} />
-      </Layout.Header>
+      </Layout.Header> }
+
       <Layout.Main>
         {article.metadata.description
           ? <p>{article.metadata.description}</p>
@@ -33,10 +34,11 @@ const ArticlePage = ({ article }: Props) => {
         <div className="text-sm m-4">
           {article.metadata.categories.length > 0
             ? <TaxonomyLinks taxonomy="Categories" values={article.metadata.categories} />
-            : undefined}
+            : null}
+
           {article.metadata.tags.length > 0
             ? <TaxonomyLinks taxonomy="Tags" values={article.metadata.tags} />
-            : undefined}
+            : null}
         </div>
     
         <ArticleContent content={article.content} />

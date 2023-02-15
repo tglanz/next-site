@@ -69,7 +69,9 @@ export async function readArticle(filePath: string): Promise<Article> {
   const matterData = articleMatter.data;
 
   matterDataRules.apply(matterData,
-    matterDataRules.defaultTitle(fileBaseName[0].toUpperCase() + fileBaseName.substring(1)),
+    // matterDataRules.defaultTitle(fileBaseName[0].toUpperCase() + fileBaseName.substring(1)),
+    // i'd rather not set a default title to allow articles without titles
+    matterDataRules.defaultTitle(null),
     matterDataRules.defaultCategories(config.content.showUncategorized ? ["Uncategories"] : []),
     matterDataRules.defaultTags(config.content.showUntagged ? ["[Untagged]"] : []),
   )

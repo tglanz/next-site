@@ -8,10 +8,6 @@ export interface Props {
 }
 
 const TaxonomyLinks = ({ taxonomy, values }: Props) => {
-  if (!values) {
-    return undefined;
-  }
-
   return (
     <div>
       <span>{taxonomy}: </span>
@@ -19,7 +15,7 @@ const TaxonomyLinks = ({ taxonomy, values }: Props) => {
         {values.map((value, index) => (
           <span key={index} className="inline-block">
             {index > 0 && ", "}
-            <Link href={urls.taxonomyArticles(taxonomy, value)} className="underline text-blue-800">
+            <Link href={urls.taxonomyArticles(taxonomy, value)}>
               {value}
             </Link>
           </span>

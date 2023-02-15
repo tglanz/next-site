@@ -28,7 +28,7 @@ const TaxonomyValues: React.FC<{ taxonomy: string, values: string[] }> = ({ taxo
       {values.map((value, index) => (
         <span key={index} className="inline-block">
           {index > 0 && ", "}
-          <Link className="underline text-blue-800" href={urls.taxonomyArticles(taxonomy, value)}>
+          <Link href={urls.taxonomyArticles(taxonomy, value)}>
             {value}
           </Link>
         </span>
@@ -41,8 +41,10 @@ function ArticleCard(props: Props) {
   const { article } = props;
 
   return (
-    <Container href={urls.article(article.id)}>
-      <p className="text-2xl font-bold">{article.metadata.title}</p>
+    <div>
+      <Link className="text-2xl font-bold" href={urls.article(article.id)}>
+        {article.metadata.title}
+      </Link>
 
       {article.metadata.description
         ? <p className="font-sans">{article.metadata.description}</p>
@@ -57,7 +59,7 @@ function ArticleCard(props: Props) {
       {article.metadata.tags.length > 0
         ? <TaxonomyValues taxonomy="Tags" values={article.metadata.tags} />
         : undefined}
-    </Container>
+    </div>
   )
 }
 

@@ -14,6 +14,6 @@ export const defaultProperty = <T>(property: string, defaultValue: T) => (matter
   }
 }
 
-export const defaultTitle = (defaultTitle: string) => defaultProperty("title", defaultTitle);
+export const defaultTitle = (defaultTitle: string | null) => defaultProperty("title", defaultTitle);
 export const defaultTags = (defaultTags: string[]) => defaultProperty("tags", defaultTags);
 export const defaultCategories = (defaultCategories: string[]) => defaultProperty("categories", defaultCategories);
