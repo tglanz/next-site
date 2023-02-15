@@ -70,8 +70,8 @@ export async function readArticle(filePath: string): Promise<Article> {
 
   matterDataRules.apply(matterData,
     matterDataRules.defaultTitle(fileBaseName[0].toUpperCase() + fileBaseName.substring(1)),
-    matterDataRules.defaultCategories(["[No Category]"]),
-    matterDataRules.defaultTags(["[No Tag]"]),
+    matterDataRules.defaultCategories(config.content.showUncategorized ? ["Uncategories"] : []),
+    matterDataRules.defaultTags(config.content.showUntagged ? ["[Untagged]"] : []),
   )
  
   const metadata: ArticleMetadata = {

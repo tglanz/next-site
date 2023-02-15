@@ -8,6 +8,8 @@
     "github": "https://github.com/tglanz"
   },
   "content": {
-    "path": "content"
+    "path": "content",
+    "showUntagged": false,
+    "showUncategorized": false
   }
 }

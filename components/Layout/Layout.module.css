@@ -18,13 +18,10 @@
 
 .container > header {
   grid-area: header;
-  border: 1px solid blue;
 }
 
 .container > main {
   grid-area: main;
-  border: 1px solid red;
-  overflow-y: scroll;
 }
 
 .container > footer {
