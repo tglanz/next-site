@@ -1,18 +1,19 @@
 .container {
-  max-width: min(48rem, 90%);
+  /* max-width: min(48rem, 90%);
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; */
 
   min-height: 100%;
 
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
 
   display: grid;
+  grid-template-columns: auto 7fr;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
-    "header"
-    "main"
-    "footer";
+    "nav header"
+    "nav main"
+    "nav footer";
 }
 
 .container > header {
@@ -21,8 +22,13 @@
 
 .container > main {
   grid-area: main;
+  border: 1px solid red;
 }
 
 .container > footer {
   grid-area: footer;
+}
+
+.container > nav {
+  grid-area: nav;
 }

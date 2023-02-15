@@ -5,9 +5,7 @@ import useConfig from './utils/useConfig';
 
 const IconLink: React.FC<{href: string}> = ({ href, children}) => (
   <Link href={href}>
-    <a>
-      {children}
-    </a>
+    {children}
   </Link>
 )
 

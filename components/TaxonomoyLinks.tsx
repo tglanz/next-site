@@ -9,8 +9,8 @@ const TaxonomyLinks: React.FC<{ taxonomy: string, values: string[] }> = ({ taxon
       {values.map((value, index) => (
         <span key={index} className="inline-block">
           {index > 0 && ", "}
-          <Link href={urls.taxonomyArticles(taxonomy, value)}>
-            <a className="underline text-blue-800">{value}</a>
+          <Link href={urls.taxonomyArticles(taxonomy, value)} className="underline text-blue-800">
+            {value}
           </Link>
         </span>
       ))}

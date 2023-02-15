@@ -50,12 +50,9 @@ function createArticleIdFromFilePath(filePath: string) {
 }
 
 export async function readArticle(filePath: string): Promise<Article> {
-  const fileBaseName = path.basename(filePath)
+  const fileBaseName = path.basename(filePath).replace(/(\.[^\.]+)$/, '')
   const articleContents = await fs.readFile(filePath);
   const articleMatter = matter(articleContents);
-
-  // .replace(/.*(\.[^\.]+)$/, '')
-  // const id = path.basename(filePath).replace(/(\.[^\.]+)$/, '')
 
   const processedContent = await unified()
     .use(remarkParse)
@@ -72,7 +69,9 @@ export async function readArticle(filePath: string): Promise<Article> {
   const matterData = articleMatter.data;
 
   matterDataRules.apply(matterData,
-    matterDataRules.defaultTitle(fileBaseName[0].toUpperCase() + fileBaseName.substring(1))
+    matterDataRules.defaultTitle(fileBaseName[0].toUpperCase() + fileBaseName.substring(1)),
+    matterDataRules.defaultCategories(["[No Category]"]),
+    matterDataRules.defaultTags(["[No Tag]"]),
   )
  
   const metadata: ArticleMetadata = {

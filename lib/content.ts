@@ -33,16 +33,6 @@ export async function readContent(directoryPath: string) {
   const files = await getFilesRecursivesly(directoryPath);
   const articles = await Promise.all(files.map(readArticle));
 
-  articles.forEach(article => {
-    if (article.metadata.categories.length === 0) {
-      article.metadata.categories.push("[Uncategorized]")
-    }
-
-    if (article.metadata.tags.length === 0) {
-      article.metadata.tags.push("[Untagged]")
-    }
-  })
-
   const metadataAggregation = aggregateMetadata(articles);
 
   return { articles, metadataAggregation };
