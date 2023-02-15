@@ -10,6 +10,7 @@ import { useContext, useEffect } from "react";
 import { SearchIndexContext } from "../utils/searchIndexContext";
 import SearchIndex from "../../lib/search-index";
 import SearchBox from "../SearchBox/SearchBox";
+import Layout from "../Layout/Layout";
 
 interface Props {
   content: Content
@@ -43,7 +44,7 @@ const HomePage = ({ content }: Props) => {
   useEffect(() => searchIndexContext.set(new SearchIndex(content.articles)), [content])
 
   return (
-    <div>
+    <Layout.Main>
       <div className="m-4 flex flex-col items-center">
         <img src="/logo.png"></img>
 
@@ -75,7 +76,7 @@ const HomePage = ({ content }: Props) => {
           <li>Content arrangement</li>
         </ul>
       </div>
-    </div>
+    </Layout.Main>
   );
 };
 

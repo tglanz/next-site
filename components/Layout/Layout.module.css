@@ -3,7 +3,7 @@
   margin-left: auto;
   margin-right: auto; */
 
-  min-height: 100%;
+  height: 100%;
 
   /* padding-top: 1rem; */
 
@@ -18,11 +18,13 @@
 
 .container > header {
   grid-area: header;
+  border: 1px solid blue;
 }
 
 .container > main {
   grid-area: main;
   border: 1px solid red;
+  overflow-y: scroll;
 }
 
 .container > footer {

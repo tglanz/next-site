@@ -7,6 +7,7 @@ import {renderMath} from '../../lib/math';
 
 import TaxonomyLinks from "../TaxonomoyLinks";
 import { useEffect } from "react";
+import Layout from "../Layout/Layout";
 
 export interface Props {
   article: Article
@@ -20,24 +21,27 @@ const ArticlePage = ({ article }: Props) => {
   });
 
   return (
-    <div>
-      <Headline title={article.metadata.title} subtitle={""} />
-  
-      {article.metadata.description
-        ? <p>{article.metadata.description}</p>
-        : undefined}
-  
-      <div className="text-sm m-4">
-        {article.metadata.categories.length > 0
-          ? <TaxonomyLinks taxonomy="Categories" values={article.metadata.categories} />
+    <>
+      <Layout.Header>
+        <Headline title={article.metadata.title} subtitle={""} />
+      </Layout.Header>
+      <Layout.Main>
+        {article.metadata.description
+          ? <p>{article.metadata.description}</p>
           : undefined}
-        {article.metadata.tags.length > 0
-          ? <TaxonomyLinks taxonomy="Tags" values={article.metadata.tags} />
-          : undefined}
-      </div>
-  
-      <ArticleContent content={article.content} />
-    </div>
+    
+        <div className="text-sm m-4">
+          {article.metadata.categories.length > 0
+            ? <TaxonomyLinks taxonomy="Categories" values={article.metadata.categories} />
+            : undefined}
+          {article.metadata.tags.length > 0
+            ? <TaxonomyLinks taxonomy="Tags" values={article.metadata.tags} />
+            : undefined}
+        </div>
+    
+        <ArticleContent content={article.content} />
+      </Layout.Main>
+    </>
   );
 };
 

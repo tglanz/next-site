@@ -5,7 +5,7 @@ import 'highlight.js/styles/sunburst.css';
 import type { AppProps } from 'next/app'
 
 import { SearchIndexContext } from '../components/utils/searchIndexContext';
-import { Layout } from '../components/Layout/Layout'
+import Layout from '../components/Layout/Layout'
 import { useState } from 'react';
 import SearchIndex from '../lib/search-index';
 
