@@ -1,6 +1,6 @@
 ---
 title: Services
-series:
+categories:
     - Aws
 ---
 

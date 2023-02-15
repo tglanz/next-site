@@ -1,6 +1,6 @@
 ---
 title: Aws, The cli
-series:
+categories:
   - Aws
 weight: 2
 ---

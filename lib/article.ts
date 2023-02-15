@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import matter from 'gray-matter';
 
 import config from '../config.json';
+import * as matterDataRules from './matter-data-rules';
 
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
@@ -12,8 +13,6 @@ import rehypeFormat from 'rehype-format';
 import rehypeStringify from 'rehype-stringify';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
-
-const MANDATORY_METADATA_FIELDS = ["title"];
 
 export interface MetadataAggregationStats {
   count: number
@@ -51,6 +50,7 @@ function createArticleIdFromFilePath(filePath: string) {
 }
 
 export async function readArticle(filePath: string): Promise<Article> {
+  const fileBaseName = path.basename(filePath)
   const articleContents = await fs.readFile(filePath);
   const articleMatter = matter(articleContents);
 
@@ -71,12 +71,10 @@ export async function readArticle(filePath: string): Promise<Article> {
 
   const matterData = articleMatter.data;
 
-  MANDATORY_METADATA_FIELDS.forEach(mandatory => {
-    if (!matterData.hasOwnProperty(mandatory)) {
-      throw new Error(`Mandatory metadata field "${mandatory}" is missing in ${filePath}`)
-    }
-  });
-
+  matterDataRules.apply(matterData,
+    matterDataRules.defaultTitle(fileBaseName[0].toUpperCase() + fileBaseName.substring(1))
+  )
+ 
   const metadata: ArticleMetadata = {
     title: matterData.title,
     description: matterData.description || null,

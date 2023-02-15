@@ -1,6 +1,6 @@
 ---
 title: Aws, Bullets 
-series:
+categories:
   - Aws
 ---
 

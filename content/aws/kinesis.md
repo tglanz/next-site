@@ -1,4 +1,6 @@
 ---
+categories:
+- Aws
 ---
 
 List streams

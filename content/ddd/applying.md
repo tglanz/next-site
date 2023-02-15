@@ -1,6 +1,6 @@
 ---
 title: Applying
-series:
+categories:
   - Domain Driven Design
 weight: 4
 ---

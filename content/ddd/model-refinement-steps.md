@@ -1,6 +1,6 @@
 ---
 title: Model Refinement Steps 
-series:
+categories:
   - Domain Driven Design
 weight: 3 
 ---

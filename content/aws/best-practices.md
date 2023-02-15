@@ -1,6 +1,6 @@
 ---
 title: Aws, Best practices
-series:
+categories:
   - Aws
 ---
 

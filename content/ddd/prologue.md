@@ -1,6 +1,6 @@
 ---
 title: Domain Driven Design, Prologue
-series:
+categories:
   - Domain Driven Design
 weight: 1
 ---

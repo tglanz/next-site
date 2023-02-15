@@ -1,6 +1,6 @@
 ---
 title: Tactical Design
-series:
+categories:
   - Domain Driven Design
 weight: 2
 ---
